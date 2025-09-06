@@ -68,12 +68,12 @@
             <div class="flex justify-between items-center py-4">
                 <div class="text-2xl font-bold gold serif">Content Clarity Toolkit</div>
                 <div class="hidden md:flex space-x-8">
-                    <button onclick="scrollToSection('welcome')" class="text-gray-700 hover:text-yellow-600 font-medium">Welcome</button>
-                    <button onclick="scrollToSection('profile')" class="text-gray-700 hover:text-yellow-600 font-medium">Profile</button>
-                    <button onclick="scrollToSection('framework')" class="text-gray-700 hover:text-yellow-600 font-medium">Framework</button>
-                    <button onclick="scrollToSection('hooks')" class="text-gray-700 hover:text-yellow-600 font-medium">Hooks</button>
-                    <button onclick="scrollToSection('planner')" class="text-gray-700 hover:text-yellow-600 font-medium">Planner</button>
-                    <button onclick="scrollToSection('tracker')" class="text-gray-700 hover:text-yellow-600 font-medium">Tracker</button>
+                    <a href="#welcome" class="text-gray-700 hover:text-yellow-600 font-medium">Welcome</a>
+                    <a href="#profile" class="text-gray-700 hover:text-yellow-600 font-medium">Profile</a>
+                    <a href="#framework" class="text-gray-700 hover:text-yellow-600 font-medium">Framework</a>
+                    <a href="#hooks" class="text-gray-700 hover:text-yellow-600 font-medium">Hooks</a>
+                    <a href="#planner" class="text-gray-700 hover:text-yellow-600 font-medium">Planner</a>
+                    <a href="#tracker" class="text-gray-700 hover:text-yellow-600 font-medium">Tracker</a>
                 </div>
             </div>
         </div>
@@ -139,9 +139,9 @@
                     <h2 class="text-2xl font-bold gold mb-4">🚀 Your Complete Toolkit Awaits Below</h2>
                     <p class="text-lg mb-6">Everything is interactive, saves automatically, and works on any device. Scroll down to start building your content strategy!</p>
                     
-                    <button onclick="scrollToSection('profile')" class="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white px-12 py-4 rounded-xl text-xl font-bold transition-all transform hover:scale-105 pulse-glow inline-block">
+                    <a href="#profile" class="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white px-12 py-4 rounded-xl text-xl font-bold transition-all transform hover:scale-105 pulse-glow inline-block">
                         Start Your Journey →
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -669,17 +669,6 @@
     </button>
 
     <script>
-        // Smooth scrolling function
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-
         // Tab functionality
         function showTab(tabId, button) {
             // Hide all tab contents
@@ -817,6 +806,20 @@
 
             // Load saved data
             loadSavedData();
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
         });
 
         function loadSavedData() {
@@ -858,5 +861,5 @@
         // Add auto-save to all inputs
         document.addEventListener('input', autoSave);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b0dd97d323c976',t:'MTc1NzE5MjEwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b0c8ba01e6c976',t:'MTc1NzE5MTI1NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
