@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Content Clarity Toolkit - Complete Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .serif { font-family: 'Playfair Display', serif; }
+        .gold { color: #d4af37; }
+        body { font-family: 'Inter', sans-serif; }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #fff9e6 0%, #f9f7f4 100%);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-in { animation: fadeIn 0.6s ease-out; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .pulse-glow {
+            box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+            animation: pulse-gold 2s infinite;
+        }
+        
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-amber-50 to-orange-50 text-gray-800">
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold gold serif">Content Clarity Toolkit</div>
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="scrollToSection('welcome')" class="text-gray-700 hover:text-yellow-600 font-medium">Welcome</button>
+                    <button onclick="scrollToSection('profile')" class="text-gray-700 hover:text-yellow-600 font-medium">Profile</button>
+                    <button onclick="scrollToSection('framework')" class="text-gray-700 hover:text-yellow-600 font-medium">Framework</button>
+                    <button onclick="scrollToSection('hooks')" class="text-gray-700 hover:text-yellow-600 font-medium">Hooks</button>
+                    <button onclick="scrollToSection('planner')" class="text-gray-700 hover:text-yellow-600 font-medium">Planner</button>
+                    <button onclick="scrollToSection('tracker')" class="text-gray-700 hover:text-yellow-600 font-medium">Tracker</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Welcome Hero Section -->
+    <section id="welcome" class="hero-gradient py-20 text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="animate-in">
+                <h1 class="text-5xl md:text-6xl font-bold serif mb-6 leading-tight">
+                    Welcome to Your<br>
+                    <span class="gold">Content Clarity Toolkit</span>
+                </h1>
+                <p class="text-2xl md:text-3xl gold serif italic mb-8">From posting pretty to posting profitably</p>
+                
+                <div class="w-48 h-48 mx-auto mb-8 float-animation">
+                    <svg width="192" height="192" viewBox="0 0 192 192" style="filter: drop-shadow(0 8px 25px rgba(212, 175, 55, 0.3));">
+                        <circle cx="96" cy="96" r="90" fill="url(#heroGradient)" stroke="#d4af37" stroke-width="3"/>
+                        
+                        <!-- Content creation icons -->
+                        <g transform="translate(96, 52)">
+                            <rect x="-12" y="-12" width="24" height="24" rx="6" fill="#E4405F" opacity="0.9"/>
+                            <circle cx="0" cy="0" r="6" fill="white"/>
+                            <circle cx="0" cy="0" r="3" fill="#E4405F"/>
+                        </g>
+                        
+                        <g transform="translate(140, 96)">
+                            <rect x="-12" y="-12" width="24" height="24" rx="4" fill="#0077B5" opacity="0.9"/>
+                            <text x="0" y="4" text-anchor="middle" font-size="12" fill="white" font-weight="bold">in</text>
+                        </g>
+                        
+                        <g transform="translate(96, 140)">
+                            <rect x="-12" y="-12" width="24" height="24" rx="6" fill="#000000" opacity="0.9"/>
+                            <text x="0" y="4" text-anchor="middle" font-size="10" fill="white" font-weight="bold">TT</text>
+                        </g>
+                        
+                        <g transform="translate(52, 96)">
+                            <rect x="-12" y="-12" width="24" height="24" rx="4" fill="#1877F2" opacity="0.9"/>
+                            <text x="0" y="6" text-anchor="middle" font-size="16" fill="white" font-weight="bold">f</text>
+                        </g>
+                        
+                        <!-- Central growth symbol -->
+                        <g transform="translate(96, 96)">
+                            <circle cx="0" cy="0" r="26" fill="white" stroke="#d4af37" stroke-width="3"/>
+                            <path d="M-12,6 L0,-12 L12,6 M0,-12 L0,12" stroke="#d4af37" stroke-width="4" fill="none" stroke-linecap="round"/>
+                            <circle cx="0" cy="12" r="4" fill="#d4af37"/>
+                        </g>
+                        
+                        <defs>
+                            <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#fff9e6;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#f9f7f4;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                
+                <p class="text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed">
+                    🎉 <strong>Congratulations on your purchase!</strong> You now have access to the complete Content Clarity Toolkit - your roadmap to creating content that actually converts followers into paying customers.
+                </p>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-2xl max-w-2xl mx-auto mb-12">
+                    <h2 class="text-2xl font-bold gold mb-4">🚀 Your Complete Toolkit Awaits Below</h2>
+                    <p class="text-lg mb-6">Everything is interactive, saves automatically, and works on any device. Scroll down to start building your content strategy!</p>
+                    
+                    <button onclick="scrollToSection('profile')" class="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white px-12 py-4 rounded-xl text-xl font-bold transition-all transform hover:scale-105 pulse-glow inline-block">
+                        Start Your Journey →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl font-bold serif gold text-center mb-12">Your Content Creator Profile</h2>
+            
+            <div class="bg-gray-50 rounded-xl p-8 shadow-lg">
+                <h3 class="text-2xl font-semibold gold mb-6">Let's Get to Know You</h3>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Your Name:</label>
+                        <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Enter your full name" id="userName">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Your Niche:</label>
+                        <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="e.g., Business Coach, Fitness Trainer" id="userNiche">
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold mb-2">Describe your business:</label>
+                    <textarea class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none h-24" placeholder="What do you do? Who do you serve? What makes you unique?" id="userBusiness"></textarea>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold mb-2">Your biggest content struggle:</label>
+                    <textarea class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none h-24" placeholder="What's challenging you most right now with content creation?" id="userStruggle"></textarea>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold mb-2">Your 90-day content goal:</label>
+                    <textarea class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none h-24" placeholder="What do you want to achieve in the next 90 days?" id="userGoal"></textarea>
+                </div>
+
+                <button onclick="saveProfile()" class="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-semibold">Save Profile</button>
+                <div id="profileSuccess" class="success-message">Profile saved successfully! 🎉</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Framework Section -->
+    <section id="framework" class="py-20 bg-gradient-to-br from-yellow-50 to-orange-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold serif gold text-center mb-12">The Content Clarity Framework</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center card-hover transition-all">
+                    <div class="text-4xl mb-4">🏆</div>
+                    <h3 class="text-xl font-bold gold mb-3">AUTHORITY</h3>
+                    <p class="text-gray-600 mb-4">Establish expertise and build trust with your audience through thought leadership content.</p>
+                    <div class="text-left">
+                        <strong class="text-sm">Examples:</strong>
+                        <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                            <li>• Industry insights</li>
+                            <li>• Case studies</li>
+                            <li>• Expert predictions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center card-hover transition-all">
+                    <div class="text-4xl mb-4">💎</div>
+                    <h3 class="text-xl font-bold gold mb-3">VALUE</h3>
+                    <p class="text-gray-600 mb-4">Provide helpful, actionable content that solves problems for your audience.</p>
+                    <div class="text-left">
+                        <strong class="text-sm">Examples:</strong>
+                        <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                            <li>• How-to tutorials</li>
+                            <li>• Tips and tricks</li>
+                            <li>• Free resources</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center card-hover transition-all">
+                    <div class="text-4xl mb-4">🤝</div>
+                    <h3 class="text-xl font-bold gold mb-3">RELATABLE</h3>
+                    <p class="text-gray-600 mb-4">Connect through shared experiences and behind-the-scenes moments.</p>
+                    <div class="text-left">
+                        <strong class="text-sm">Examples:</strong>
+                        <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                            <li>• Personal stories</li>
+                            <li>• Behind-the-scenes</li>
+                            <li>• Struggles and wins</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center card-hover transition-all">
+                    <div class="text-4xl mb-4">💰</div>
+                    <h3 class="text-xl font-bold gold mb-3">CONVERSION</h3>
+                    <p class="text-gray-600 mb-4">Drive action and generate sales with strategic promotional content.</p>
+                    <div class="text-left">
+                        <strong class="text-sm">Examples:</strong>
+                        <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                            <li>• Product launches</li>
+                            <li>• Service promotions</li>
+                            <li>• Lead magnets</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-8 shadow-lg">
+                <h3 class="text-2xl font-bold gold mb-6 text-center">The 40-30-20-10 Rule</h3>
+                <p class="text-center mb-8 text-lg">For optimal engagement and conversion, balance your content using this proven formula:</p>
+                
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center p-6 bg-yellow-50 rounded-lg">
+                        <div class="text-3xl font-bold mb-2">40%</div>
+                        <div class="font-bold gold">VALUE</div>
+                        <p class="text-sm text-gray-600 mt-2">Educational content that builds trust</p>
+                    </div>
+                    <div class="text-center p-6 bg-yellow-50 rounded-lg">
+                        <div class="text-3xl font-bold mb-2">30%</div>
+                        <div class="font-bold gold">RELATABLE</div>
+                        <p class="text-sm text-gray-600 mt-2">Personal stories and connection</p>
+                    </div>
+                    <div class="text-center p-6 bg-yellow-50 rounded-lg">
+                        <div class="text-3xl font-bold mb-2">20%</div>
+                        <div class="font-bold gold">AUTHORITY</div>
+                        <p class="text-sm text-gray-600 mt-2">Expertise and thought leadership</p>
+                    </div>
+                    <div class="text-center p-6 bg-yellow-50 rounded-lg">
+                        <div class="text-3xl font-bold mb-2">10%</div>
+                        <div class="font-bold gold">CONVERSION</div>
+                        <p class="text-sm text-gray-600 mt-2">Direct sales and promotion</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hooks Section -->
+    <section id="hooks" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold serif gold text-center mb-12">Your Hook Bank</h2>
+            
+            <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg">
+                <div class="flex flex-wrap bg-white border-b">
+                    <button class="px-6 py-4 font-semibold border-b-2 border-yellow-500 text-yellow-600 tab-btn active" onclick="showTab('viral-hooks', this)">🔥 Viral Hooks</button>
+                    <button class="px-6 py-4 font-semibold text-gray-600 hover:text-yellow-600 tab-btn" onclick="showTab('custom-hooks', this)">✍️ Custom Hooks</button>
+                    <button class="px-6 py-4 font-semibold text-gray-600 hover:text-yellow-600 tab-btn" onclick="showTab('caption-frameworks', this)">📝 Caption Frameworks</button>
+                </div>
+
+                <div id="viral-hooks" class="tab-content active p-8">
+                    <h3 class="text-2xl font-bold gold mb-6">15 Viral Hook Templates</h3>
+                    <p class="mb-8 text-lg">These proven hooks have generated millions of views. Simply customize them for your niche!</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-xl font-bold gold mb-4">😤 Pain-Driven Hooks</h4>
+                            <div class="space-y-4">
+                                <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                                    <strong>1.</strong> "The mistake keeping 90% of [your audience] broke on Instagram…"
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                                    <strong>2.</strong> "If you're still [painful habit], no wonder your engagement is dead."
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                                    <strong>3.</strong> "This is why your content looks good but gets ignored."
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                                    <strong>4.</strong> "The brutal truth about why clients don't trust you yet…"
+                                </div>
+                            </div>
+
+                            <h4 class="text-xl font-bold gold mb-4 mt-8">🤔 Curiosity-Driven Hooks</h4>
+                            <div class="space-y-4">
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <strong>5.</strong> "What I'd do if I had to start Instagram growth from zero today."
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <strong>6.</strong> "The post formula no one in your niche is talking about (but should)."
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <strong>7.</strong> "Ever wonder why [competitor] gets 10x the results with half the posts?"
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <strong>8.</strong> "This tiny change took my reach from crickets to thousands."
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xl font-bold gold mb-4">✨ Desire-Driven Hooks</h4>
+                            <div class="space-y-4">
+                                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                                    <strong>9.</strong> "Imagine posting less and making more sales. Here's how…"
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                                    <strong>10.</strong> "The 3-second trick that makes people stop scrolling instantly."
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                                    <strong>11.</strong> "Want your content to attract clients on autopilot? Use this…"
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                                    <strong>12.</strong> "Here's how I turned 1 post into 3 clients (and you can too)."
+                                </div>
+                            </div>
+
+                            <h4 class="text-xl font-bold gold mb-4 mt-8">🤝 Relatable Hooks</h4>
+                            <div class="space-y-4">
+                                <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                                    <strong>13.</strong> "The advice that almost ruined my Instagram growth…"
+                                </div>
+                                <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                                    <strong>14.</strong> "Here's what nobody told me when I started posting…"
+                                </div>
+                                <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                                    <strong>15.</strong> "If I could go back and tell beginner-me ONE thing, it would be this."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="custom-hooks" class="tab-content p-8">
+                    <h3 class="text-2xl font-bold gold mb-6">Create Your Personal Hook Bank</h3>
+                    <p class="mb-8 text-lg">Build your library of go-to hooks customized for your niche and audience.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-xl font-bold gold mb-4">😤 Your Pain-Point Hooks</h4>
+                            <div class="space-y-4">
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Write your pain-point hook here..." id="painHook1">
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Write your pain-point hook here..." id="painHook2">
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Write your pain-point hook here..." id="painHook3">
+                            </div>
+
+                            <h4 class="text-xl font-bold gold mb-4 mt-8">🤔 Your Curiosity Hooks</h4>
+                            <div class="space-y-4">
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Write your curiosity hook here..." id="curiosityHook1">
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Write your curiosity hook here..." id="curiosityHook2">
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Write your curiosity hook here..." id="curiosityHook3">
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xl font-bold gold mb-4">✨ Your Desire Hooks</h4>
+                            <div class="space-y-4">
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Write your desire hook here..." id="desireHook1">
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Write your desire hook here..." id="desireHook2">
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Write your desire hook here..." id="desireHook3">
+                            </div>
+
+                            <h4 class="text-xl font-bold gold mb-4 mt-8">🤝 Your Relatable Hooks</h4>
+                            <div class="space-y-4">
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Write your relatable hook here..." id="relatableHook1">
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Write your relatable hook here..." id="relatableHook2">
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Write your relatable hook here..." id="relatableHook3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="saveHooks()" class="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-semibold mt-8">Save Hook Bank</button>
+                    <div id="hooksSuccess" class="success-message">Hook bank saved successfully! 🎣</div>
+                </div>
+
+                <div id="caption-frameworks" class="tab-content p-8">
+                    <h3 class="text-2xl font-bold gold mb-6">10 Caption Frameworks</h3>
+                    <p class="mb-8 text-lg">Use these proven structures with your hooks for maximum engagement!</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                            <div class="font-bold gold mb-2">1. Mistake → Fix</div>
+                            <p>❌ Mistake: [painful habit]<br>⚡ Fix: [solution]</p>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                            <div class="font-bold gold mb-2">2. Do This, Not That</div>
+                            <p>❌ Don't: [bad approach]<br>✅ Do: [better approach]</p>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                            <div class="font-bold gold mb-2">3. Storytelling Lesson</div>
+                            <p>Struggle → Turning point → Outcome</p>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                            <div class="font-bold gold mb-2">4. Myth-Busting</div>
+                            <p>🚫 Myth: [belief]<br>✅ Truth: [reality]</p>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                            <div class="font-bold gold mb-2">5. Quick Tip Hack</div>
+                            <p>"Here's the [niche] hack you'll wish you knew sooner…"</p>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                            <div class="font-bold gold mb-2">6. Case Study / Proof</div>
+                            <p>📊 "How I went from [pain] → [result] in [time]."</p>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                            <div class="font-bold gold mb-2">7. Framework Breakdown</div>
+                            <p>"My [3-step formula] for [result]."</p>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                            <div class="font-bold gold mb-2">8. Relatable Confession</div>
+                            <p>"I used to believe [bad advice]. Here's how it held me back…"</p>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                            <div class="font-bold gold mb-2">9. Before & After</div>
+                            <p>Before: [pain]<br>After: [result]</p>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                            <div class="font-bold gold mb-2">10. Call-Out Post</div>
+                            <p>"If you're [audience] and still [mistake], this is why you're stuck."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planner Section -->
+    <section id="planner" class="py-20 bg-gradient-to-br from-yellow-50 to-orange-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold serif gold text-center mb-12">Weekly Content Planner</h2>
+            
+            <div class="bg-white rounded-xl p-8 shadow-lg">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold gold mb-4">Week of: 
+                        <input type="text" class="border-2 border-gray-200 rounded-lg px-4 py-2 focus:border-yellow-500 focus:outline-none" placeholder="Enter date range" id="weekDate">
+                    </h3>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-yellow-500">
+                        <thead>
+                            <tr class="bg-yellow-50">
+                                <th class="border border-yellow-500 p-4 text-left font-semibold gold">Day</th>
+                                <th class="border border-yellow-500 p-4 text-left font-semibold gold">Post Type</th>
+                                <th class="border border-yellow-500 p-4 text-left font-semibold gold">Hook/Topic</th>
+                                <th class="border border-yellow-500 p-4 text-left font-semibold gold">CTA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-yellow-25">
+                                <td class="border border-yellow-500 p-4 font-semibold bg-yellow-50">Monday</td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Authority/Motivation" id="mon-type"></td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Your hook or topic" id="mon-hook"></td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Call to action" id="mon-cta"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-yellow-500 p-4 font-semibold bg-blue-50">Tuesday</td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Value/Tutorial" id="tue-type"></td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Your hook or topic" id="tue-hook"></td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Call to action" id="tue-cta"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-yellow-500 p-4 font-semibold bg-green-50">Wednesday</td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Authority/Wisdom" id="wed-type"></td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Your hook or topic" id="wed-hook"></td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Call to action" id="wed-cta"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-yellow-500 p-4 font-semibold bg-pink-50">Thursday</td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Relatable/Story" id="thu-type"></td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Your hook or topic" id="thu-hook"></td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Call to action" id="thu-cta"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-yellow-500 p-4 font-semibold bg-orange-50">Friday</td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Social Proof" id="fri-type"></td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Your hook or topic" id="fri-hook"></td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Call to action" id="fri-cta"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-yellow-500 p-4 font-semibold bg-purple-50">Saturday</td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Community/Q&A" id="sat-type"></td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Your hook or topic" id="sat-hook"></td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Call to action" id="sat-cta"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-yellow-500 p-4 font-semibold bg-red-50">Sunday</td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Reflection/Planning" id="sun-type"></td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Your hook or topic" id="sun-hook"></td>
+                                <td class="border border-yellow-500 p-4"><input type="text" class="w-full border-none bg-transparent" placeholder="Call to action" id="sun-cta"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button onclick="savePlanner()" class="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-semibold mt-6">Save Weekly Plan</button>
+                <div id="plannerSuccess" class="success-message">Weekly plan saved successfully! 📅</div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mt-8">
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <h4 class="text-xl font-bold gold mb-4">📝 Content Ideas</h4>
+                    <textarea class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none h-48" placeholder="Brainstorm your content ideas here..." id="contentIdeas"></textarea>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <h4 class="text-xl font-bold gold mb-4">🎯 Weekly Goals</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Engagement goal:</label>
+                            <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="e.g., 50 comments total" id="engagementGoal">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Follower goal:</label>
+                            <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="e.g., +20 followers" id="followerGoal">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Lead generation goal:</label>
+                            <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="e.g., 10 DMs" id="leadGoal">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Sales goal:</label>
+                            <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="e.g., 2 bookings" id="salesGoal">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tracker Section -->
+    <section id="tracker" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold serif gold text-center mb-12">Performance Tracker</h2>
+            
+            <div class="bg-gray-50 rounded-xl p-8 shadow-lg">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold gold mb-4">Track Your Content Performance</h3>
+                    <p>Month: <input type="text" class="border-2 border-gray-200 rounded-lg px-4 py-2 focus:border-yellow-500 focus:outline-none mx-2" placeholder="January" id="trackMonth"> 
+                    Year: <input type="text" class="border-2 border-gray-200 rounded-lg px-4 py-2 focus:border-yellow-500 focus:outline-none mx-2" placeholder="2024" id="trackYear"></p>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-yellow-500 bg-white" style="min-width: 800px;">
+                        <thead>
+                            <tr class="bg-yellow-50">
+                                <th class="border border-yellow-500 p-3 text-left font-semibold gold">Date</th>
+                                <th class="border border-yellow-500 p-3 text-left font-semibold gold">Post Type</th>
+                                <th class="border border-yellow-500 p-3 text-left font-semibold gold">Hook/Topic</th>
+                                <th class="border border-yellow-500 p-3 text-left font-semibold gold">Likes</th>
+                                <th class="border border-yellow-500 p-3 text-left font-semibold gold">Comments</th>
+                                <th class="border border-yellow-500 p-3 text-left font-semibold gold">Saves</th>
+                                <th class="border border-yellow-500 p-3 text-left font-semibold gold">DMs</th>
+                                <th class="border border-yellow-500 p-3 text-left font-semibold gold">Leads</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trackerTable">
+                            <!-- Rows will be generated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-6 space-x-4">
+                    <button onclick="addTrackerRow()" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold">Add Row</button>
+                    <button onclick="saveTracker()" class="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-semibold">Save Tracker</button>
+                </div>
+                <div id="trackerSuccess" class="success-message">Performance data saved successfully! 📊</div>
+            </div>
+
+            <div class="bg-white rounded-xl p-8 shadow-lg mt-8">
+                <h4 class="text-2xl font-bold gold mb-6">📈 Monthly Insights</h4>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h5 class="text-xl font-bold gold mb-4">What's Working</h5>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Best performing post:</label>
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Which post got the most engagement?" id="bestPost">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Most engaging content type:</label>
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Authority, Value, Relatable, or Conversion?" id="bestType">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Most effective hook style:</label>
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="Pain, Curiosity, Desire, or Relatable?" id="bestHook">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="text-xl font-bold gold mb-4">Next Month's Focus</h5>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Do more of:</label>
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="What's working well?" id="doMore">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Do less of:</label>
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="What's not working?" id="doLess">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Next month's goal:</label>
+                                <input type="text" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" placeholder="What's your main objective?" id="nextGoal">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="saveInsights()" class="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-semibold mt-6">Save Insights</button>
+                <div id="insightsSuccess" class="success-message">Monthly insights saved successfully! 💡</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-12">
+        <div class="max-w-4xl mx-auto px-4">
+            <h3 class="text-2xl font-bold serif gold mb-4">Ready to Transform Your Content?</h3>
+            <p class="text-lg mb-6 max-w-2xl mx-auto">You now have everything you need to create content that converts. Remember: consistency beats perfection every time!</p>
+            <p class="text-sm opacity-75">Created by Social Syntax Studio | @socialsyntaxstudio</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button onclick="scrollToTop()" class="fixed bottom-8 right-8 bg-yellow-600 hover:bg-yellow-700 text-white p-4 rounded-full shadow-lg transition-transform hover:scale-110 z-50">
+        ↑
+    </button>
+
+    <script>
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Tab functionality
+        function showTab(tabId, button) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('border-yellow-500', 'text-yellow-600');
+                btn.classList.add('text-gray-600');
+            });
+            
+            // Show selected tab and activate button
+            document.getElementById(tabId).classList.add('active');
+            button.classList.add('border-yellow-500', 'text-yellow-600');
+            button.classList.remove('text-gray-600');
+        }
+
+        // Save functions
+        function saveProfile() {
+            const data = {
+                name: document.getElementById('userName').value,
+                niche: document.getElementById('userNiche').value,
+                business: document.getElementById('userBusiness').value,
+                struggle: document.getElementById('userStruggle').value,
+                goal: document.getElementById('userGoal').value
+            };
+            localStorage.setItem('contentProfile', JSON.stringify(data));
+            showSuccess('profileSuccess');
+        }
+
+        function saveHooks() {
+            const hooks = {};
+            for (let i = 1; i <= 3; i++) {
+                hooks[`painHook${i}`] = document.getElementById(`painHook${i}`).value;
+                hooks[`curiosityHook${i}`] = document.getElementById(`curiosityHook${i}`).value;
+                hooks[`desireHook${i}`] = document.getElementById(`desireHook${i}`).value;
+                hooks[`relatableHook${i}`] = document.getElementById(`relatableHook${i}`).value;
+            }
+            localStorage.setItem('customHooks', JSON.stringify(hooks));
+            showSuccess('hooksSuccess');
+        }
+
+        function savePlanner() {
+            const planner = {
+                weekDate: document.getElementById('weekDate').value,
+                contentIdeas: document.getElementById('contentIdeas').value,
+                engagementGoal: document.getElementById('engagementGoal').value,
+                followerGoal: document.getElementById('followerGoal').value,
+                leadGoal: document.getElementById('leadGoal').value,
+                salesGoal: document.getElementById('salesGoal').value
+            };
+            
+            const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+            days.forEach(day => {
+                planner[`${day}Type`] = document.getElementById(`${day}-type`).value;
+                planner[`${day}Hook`] = document.getElementById(`${day}-hook`).value;
+                planner[`${day}Cta`] = document.getElementById(`${day}-cta`).value;
+            });
+            
+            localStorage.setItem('weeklyPlanner', JSON.stringify(planner));
+            showSuccess('plannerSuccess');
+        }
+
+        function saveTracker() {
+            const trackerData = {
+                month: document.getElementById('trackMonth').value,
+                year: document.getElementById('trackYear').value,
+                rows: []
+            };
+            
+            const rows = document.querySelectorAll('#trackerTable tr');
+            rows.forEach(row => {
+                const inputs = row.querySelectorAll('input');
+                if (inputs.length > 0) {
+                    const rowData = {};
+                    inputs.forEach((input, index) => {
+                        rowData[`col${index}`] = input.value;
+                    });
+                    trackerData.rows.push(rowData);
+                }
+            });
+            
+            localStorage.setItem('performanceTracker', JSON.stringify(trackerData));
+            showSuccess('trackerSuccess');
+        }
+
+        function saveInsights() {
+            const insights = {
+                bestPost: document.getElementById('bestPost').value,
+                bestType: document.getElementById('bestType').value,
+                bestHook: document.getElementById('bestHook').value,
+                doMore: document.getElementById('doMore').value,
+                doLess: document.getElementById('doLess').value,
+                nextGoal: document.getElementById('nextGoal').value
+            };
+            localStorage.setItem('monthlyInsights', JSON.stringify(insights));
+            showSuccess('insightsSuccess');
+        }
+
+        function showSuccess(elementId) {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 3000);
+        }
+
+        function addTrackerRow() {
+            const table = document.getElementById('trackerTable');
+            const row = table.insertRow();
+            const columns = 8;
+            
+            for (let i = 0; i < columns; i++) {
+                const cell = row.insertCell();
+                cell.className = 'border border-yellow-500 p-3';
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'w-full border-none bg-transparent focus:outline-none';
+                cell.appendChild(input);
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Load saved data on page load
+        window.addEventListener('load', function() {
+            // Initialize tracker table with some empty rows
+            for (let i = 0; i < 5; i++) {
+                addTrackerRow();
+            }
+
+            // Load saved data
+            loadSavedData();
+        });
+
+        function loadSavedData() {
+            // Load profile data
+            const profileData = localStorage.getItem('contentProfile');
+            if (profileData) {
+                const data = JSON.parse(profileData);
+                Object.keys(data).forEach(key => {
+                    const element = document.getElementById(`user${key.charAt(0).toUpperCase() + key.slice(1)}`);
+                    if (element) element.value = data[key];
+                });
+            }
+
+            // Load hooks data
+            const hooksData = localStorage.getItem('customHooks');
+            if (hooksData) {
+                const hooks = JSON.parse(hooksData);
+                Object.keys(hooks).forEach(key => {
+                    const element = document.getElementById(key);
+                    if (element) element.value = hooks[key];
+                });
+            }
+
+            // Load other saved data...
+        }
+
+        // Auto-save functionality
+        let saveTimeout;
+        function autoSave() {
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(() => {
+                saveProfile();
+                saveHooks();
+                savePlanner();
+                saveInsights();
+            }, 2000);
+        }
+
+        // Add auto-save to all inputs
+        document.addEventListener('input', autoSave);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b0dd97d323c976',t:'MTc1NzE5MjEwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
